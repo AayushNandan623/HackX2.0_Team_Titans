@@ -9,6 +9,7 @@ const userDataRoutes = require("./src/routes/userDataRoutes");
 const chatbotRoutes = require("./src/routes/chatbotRoutes");
 const sosRoutes = require("./src/routes/sosRoutes");
 const messageRoute = require("./src/routes/messageRoute");
+const partnerRoutes = require("./src/routes/partnerRoutes");
 const path = require("path");
 const connectDB = require("./src/db/connection");
 app.use("./uploads", express.static(path.join(__dirname, "uploads")));
@@ -18,6 +19,7 @@ app.use("/api/v1/routeUserData", userDataRoutes);
 app.use("/api/v1/chatBot", chatbotRoutes);
 app.use("/api/v1/sos", sosRoutes);
 app.use("/api/v1/messages", messageRoute);
+app.use("/api/v1/partners", partnerRoutes);
 const start = async () => {
   try {
     await connectDB(process.env.MONGO_URI);

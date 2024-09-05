@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is a comprehensive backend system for disaster management and emergency response. It provides real-time alerts, user data submission, SOS functionality, messaging, and an AI-powered chatbot to assist during emergencies.
+This project is a comprehensive backend system for disaster management and emergency response. It provides real-time alerts, user data submission, SOS functionality, messaging, and an AI-powered chatbot to assist during emergencies. The system also includes features for partner organizations to access and manage emergency data.
 
 ## Features
 
@@ -11,6 +11,7 @@ This project is a comprehensive backend system for disaster management and emerg
 - **SOS System**: Enables users to send emergency SOS signals
 - **Messaging System**: Facilitates communication between users
 - **AI Chatbot**: Provides disaster-related information and guidance using Google's Generative AI
+- **Partner Access**: Allows partner organizations to view SOS reports and messages
 
 ## Technologies Used
 
@@ -54,13 +55,48 @@ This project is a comprehensive backend system for disaster management and emerg
 
 ## API Endpoints
 
-- Alerts: `POST /api/v1/alerts`
+- Alerts: `GET, POST /api/v1/alerts`
 - User Data: `POST /api/v1/routeUserData`
 - Chatbot: `POST /api/v1/chatBot`
 - SOS: `POST /api/v1/sos`
 - Messages: `GET, POST /api/v1/messages`
+- Partner Access: 
+  - SOS Reports: `GET /api/v1/partners/sos`
+  - Messages: `GET /api/v1/partners/messages`
 
 For detailed API documentation, please refer to our [API Documentation](link-to-api-docs).
+
+## Project Structure
+
+```
+.
+├── index.js
+├── package.json
+└── src
+    ├── config
+    │   └── multerConfig.js
+    ├── controllers
+    │   ├── alertsController.js
+    │   ├── chatBotController.js
+    │   ├── messageController.js
+    │   ├── partnerController.js
+    │   ├── sosController.js
+    │   └── userDataController.js
+    ├── db
+    │   └── connection.js
+    ├── models
+    │   ├── alerts.js
+    │   ├── message.js
+    │   ├── sos.js
+    │   └── userData.js
+    └── routes
+        ├── alertRoute.js
+        ├── chatbotRoutes.js
+        ├── messageRoute.js
+        ├── partnerRoutes.js
+        ├── sosRoutes.js
+        └── userDataRoutes.js
+```
 
 ## Contributing
 
@@ -75,11 +111,11 @@ We welcome contributions to improve the Disaster Management Backend. Please foll
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the ISC License - see the [LICENSE](LICENSE) file for details.
 
 ## Contact
 
-Your Name - your.email@example.com
+Aayush Nandan - [Your Email]
 
 Project Link: [https://github.com/your-username/disaster-management-backend](https://github.com/your-username/disaster-management-backend)
 
@@ -90,3 +126,4 @@ Project Link: [https://github.com/your-username/disaster-management-backend](htt
 - [Google Generative AI](https://cloud.google.com/ai-platform)
 - [Multer](https://github.com/expressjs/multer)
 - [Axios](https://axios-http.com/)
+- [Sachet NDMA](https://sachet.ndma.gov.in/) for providing the alert data API
