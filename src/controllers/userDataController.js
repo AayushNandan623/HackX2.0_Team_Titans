@@ -1,4 +1,4 @@
-const UserData = require("../models/UserData");
+const UserData = require("../models/userData");
 exports.createUserData = async (req, res) => {
   try {
     const { userID, data, latitude, longitude } = req.body;

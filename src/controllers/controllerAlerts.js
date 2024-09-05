@@ -54,7 +54,7 @@ const createAllAlters = async (req, res) => {
   }
 };
 
-const getAllAlters = async (req, res) => {
+const getAllFilteredAlters = async (req, res) => {
   try {
     const { area_description } = req.query;
     const severityOrder = {
@@ -101,7 +101,33 @@ const getAllAlters = async (req, res) => {
     });
   }
 };
+const getAllAlters = async (req, res) => {
+  try {
+    
+    const existingIdentifiers = await Alert.find({}, {
+      area_description: 1,
+      disaster_type: 1,
+      warning_message: 1,
+      severity_color: 1,
+      alert_source: 1,
+      identifier: 1,
+      effective_start_time: 1,
+    })
+      .sort({
+        effective_start_time: -1,
+      })
+    res
+      .status(200)
+      .json({ alert: existingIdentifiers, nbHits: existingIdentifiers.length });
+  } catch (error) {
+    res.status(500).json({
+      message: "Error fetching alerts",
+      error: error.message,
+    });
+  }
+};
 module.exports = {
-  getAllAlters,
+  getAllFilteredAlters,
   createAllAlters,
+  getAllAlters,
 };
