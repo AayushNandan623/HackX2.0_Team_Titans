@@ -1,8 +1,10 @@
-
 const express = require("express");
-const {getAllAlters} = require("../controllers/controllerAlerts");
+const {
+  getAllAlters,
+  createAllAlters,
+} = require("../controllers/controllerAlerts");
 const router = express.Router();
 
-router.route("/").get(getAllAlters);
+router.route("/").get(getAllAlters).post(createAllAlters);
 
 module.exports = router;
