@@ -2,7 +2,7 @@ const axios = require("axios");
 const Alert = require("../models/controllerAlerts");
 
 const parseDateWithIST = (dateString) => {
-  return new Date(dateString.replace("IST", "GMT+0530")); // Replace IST with the correct UTC offset
+  return new Date(dateString.replace("IST", "GMT+0530"));
 };
 
 const createAllAlters = async (req, res) => {

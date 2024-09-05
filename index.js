@@ -1,13 +1,17 @@
 require("dotenv").config();
 const express = require("express");
-const router = require("./src/routes/routeAlert");
-const connectDB = require("./src/db/connect");
 const app = express();
-
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+const routerAlert = require("./src/routes/routeAlert");
+const userDataRoutes = require("./src/routes/userDataRoutes");
+const path = require("path");
+const connectDB = require("./src/db/connect");
+app.use("./uploads", express.static(path.join(__dirname, "uploads")));
 const PORT = process.env.PORT || 3000;
 
-app.use("/api/v1/alerts", router);
-
+app.use("/api/v1/alerts", routerAlert);
+app.use("/api/v1/routeUserData", userDataRoutes);
 const start = async () => {
   try {
     await connectDB(process.env.MONGO_URI);
@@ -19,4 +23,3 @@ const start = async () => {
   }
 };
 start();
-
