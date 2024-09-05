@@ -1,5 +1,5 @@
 const axios = require("axios");
-const Alert = require("../models/controllerAlerts");
+const Alert = require("../models/alerts");
 
 const parseDateWithIST = (dateString) => {
   return new Date(dateString.replace("IST", "GMT+0530"));

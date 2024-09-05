@@ -3,7 +3,7 @@ const {
   getAllAlters,
   getAllFilteredAlters,
   createAllAlters,
-} = require("../controllers/controllerAlerts");
+} = require("../controllers/alertsController");
 const router = express.Router();
 
 router
